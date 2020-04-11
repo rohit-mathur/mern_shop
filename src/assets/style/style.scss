@@ -1,0 +1,75 @@
+@import './variables';
+@import './mixins';
+
+.primary-bg{
+    background-color: $color-primary;
+}
+.full-screen-height{
+    height: 100vh;
+}
+.full-width{
+    width:100%;
+}
+.separator{
+    margin:20px 0;
+    color:$color-secondary;
+    font-size: size(14);
+    font-weight: 700;
+    &::before, &::after{
+        content: '';
+        width:80px;
+        height:2px;
+        background-color:$color-secondary;
+        display: inline-block;
+        vertical-align: middle;
+        margin:0 10px;
+    }
+}
+.primary-button{
+    background-color: $color-secondary;
+    border-color: $color-secondary;
+
+}
+.auth-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .card{
+        background-color: $color-white;
+        min-width: size(320);
+        .card-header{
+            color: $color-secondary;
+            font-size: size(24);
+            text-align: center;
+            font-weight: 700;
+            border:none;
+            &::after{
+                margin-top:5px;
+                content:'';
+                display: block;
+                width:60px;
+                height:2px;
+                background-color: #011f4b;
+                position: absolute;
+                left:50%;
+                transform: translateX(-50%);
+            }
+        }
+        .card-body{
+            .form-group{
+                display: flex;
+                // align-items: center  ;
+                .input-group-prepend{
+                    // flex: 1;
+                    padding:10px;
+                    background-color: $color-primary;
+                    color: $color-white
+                }
+                .form-control{
+                    min-height: 35px;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+}
