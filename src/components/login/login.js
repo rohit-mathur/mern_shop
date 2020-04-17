@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Container, Card, CardHeader, CardBody, Button, Form, FormGroup, Input, InputGroupAddon } from 'reactstrap';
-import { FaFacebook, FaGoogle, FaEnvelope, FaKey, FaMobileAlt } from "react-icons/fa";
+import { FaFacebook, FaGoogle, FaEnvelope, FaKey } from "react-icons/fa";
 
-class SignUp extends Component {
+class Login extends Component {
     render() {
         const { onInputChange } = this.props;
         return (
             <Container fluid className="primary-bg full-screen-height auth-card">
                 <Card>
-                    <CardHeader>Become a Seller</CardHeader>
+                    <CardHeader>Sign In</CardHeader>
                     <CardBody>
                         <Form method="post">
                             <FormGroup>
@@ -23,19 +23,7 @@ class SignUp extends Component {
                                 </InputGroupAddon>
                                 <Input type="password" name="password" placeholder="Password" onChange={onInputChange} />
                             </FormGroup>
-                            <FormGroup>
-                                <InputGroupAddon addonType="prepend">
-                                    <FaKey />
-                                </InputGroupAddon>
-                                <Input type="password" name="cpassword" placeholder="Confirm Password" onChange={onInputChange} />
-                            </FormGroup>
-                            <FormGroup>
-                                <InputGroupAddon addonType="prepend">
-                                    <FaMobileAlt />
-                                </InputGroupAddon>
-                                <Input type="number" name="phone" placeholder="Mobile Number" onChange={onInputChange} />
-                            </FormGroup>
-                            <Button type="button" className="primary-button full-width" onClick={this.props.signUpRequest}>Sign Up</Button>
+                            <Button type="button" className="primary-button full-width" onClick={this.props.signInRequest}>Sign In</Button>
                         </Form>
                         <div className="separator text-center">OR</div>
                         <div className="text-center">
@@ -49,4 +37,4 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp
+export default Login
