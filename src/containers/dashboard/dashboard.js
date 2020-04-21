@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { Button, Container } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 
-class Dashboard extends Component{
-    render(){
+class Dashboard extends Component {
+    render() {
         return (
-            <h1>Dashboard</h1>
+            <Container>
+                <NavLink to="/categories">
+                    <Button>Categories</Button>
+                </NavLink>
+            </Container>
         )
     }
 }

@@ -3,10 +3,11 @@ import Login from './../../components/login';
 import { connect } from 'react-redux';
 import { login } from './../../actions';
 import { Redirect } from 'react-router-dom';
+import { PropagateLoader } from 'react-spinners';
 
 class LoginContainer extends Component {
     state = {
-        email:'',
+        email: '',
         password: ''
     }
 
@@ -24,20 +25,33 @@ class LoginContainer extends Component {
     }
 
     render() {
-        console.log('render')
-        if(sessionStorage.getItem("authToken")){
+        
+        if (sessionStorage.getItem("authToken")) {
             return <Redirect from="/login" to="/dashboard" />
         }
         return (
-            <Login
-                signInRequest={this.signInRequest}
-                onInputChange={this.onInputChange}
-            />
+            <>
+                <Login
+                    signInRequest={this.signInRequest}
+                    onInputChange={this.onInputChange}
+                />
+                {
+                    this.props.loading && (
+                        <div className="loader">
+                            <PropagateLoader size={15}
+                                color={"#123abc"}
+                                loading={true} />
+                        </div>
+                    )
+                }
+
+            </>
         )
     }
 }
 
 const mapStateToProps = state => ({
+    loading: state.login.loading,
     token: state.login.token
 })
 

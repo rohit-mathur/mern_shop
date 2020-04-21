@@ -2,14 +2,20 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 import { SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_IN_FAILURE } from './../constants';
 import { api } from './../services';
 
-function* loginWalkerSaga(action){
+function* loginWalkerSaga(action) {
     try {
         const result = yield call(api.login, action.payload)
-        sessionStorage.setItem("authToken", result.data.token)
-        yield put({
-            type: SIGN_IN_SUCCESS,
-            payload: result.data
-        })
+        if (result.data) {
+            sessionStorage.setItem("authToken", result.data.token);
+            yield put({
+                type: SIGN_IN_SUCCESS,
+                payload: result.data
+            })
+        } else {
+        }
+
+        // if(result.data){
+        // }
     } catch (e) {
         yield put({
             type: SIGN_IN_FAILURE,
@@ -18,6 +24,6 @@ function* loginWalkerSaga(action){
     }
 }
 
-export default function* loginWatcherSaga(){
+export default function* loginWatcherSaga() {
     yield takeLatest(SIGN_IN_REQUEST, loginWalkerSaga)
 }

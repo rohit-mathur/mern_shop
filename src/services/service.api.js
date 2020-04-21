@@ -12,3 +12,9 @@ export function login(reqBody){
     const dataJson = JSON.stringify(reqBody);
     return baseService.post(url, dataJson);
 }
+
+export function addCategory(reqBody){
+    let url = uriConstants.ADD_CATEGORY_API;
+    const dataJson = JSON.stringify(reqBody);
+    return baseService.post(url, dataJson);
+}

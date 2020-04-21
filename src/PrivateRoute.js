@@ -8,7 +8,7 @@ class PrivateRoute extends Component {
             <Route
                 {...rest}
                 render={() => {
-                    return sessionStorage.getItem('authToke') ? (
+                    return sessionStorage.getItem('authToken') ? (
                             <Component {...this.props} />
                         ) : (
                             <Redirect to="/login" />
